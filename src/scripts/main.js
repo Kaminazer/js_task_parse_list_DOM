@@ -7,12 +7,15 @@ function sortList(list) {
     return convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary);
   });
 
-  const listContainer = document.querySelector('ul');
+  const ul = document.querySelector('ul');
 
-  listContainer.innerHTML = '';
+  ul.innerHTML = '';
 
   list.forEach((item) => {
-    listContainer.appendChild(item);
+    ul.insertAdjacentHTML(
+      'beforeend',
+      `<li data-position="${item.dataset.position}" data-salary="${item.dataset.salary}" data-age="${item.dataset.age}">${item.textContent.trim()}</li>`,
+    );
   });
 }
 
