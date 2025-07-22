@@ -2,19 +2,21 @@
 
 const employers = [...document.body.querySelector('ul').children];
 
-function sortList(list) {
+function sortList(employees) {
+  const list = getEmployees(employees);
+
   list.sort((a, b) => {
-    return convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary);
+    return convertSalary(b.salary) - convertSalary(a.salary);
   });
 
-  const ul = document.querySelector('ul');
+  const listContainer = document.querySelector('ul');
 
-  ul.innerHTML = '';
+  listContainer.innerHTML = '';
 
   list.forEach((item) => {
-    ul.insertAdjacentHTML(
+    listContainer.insertAdjacentHTML(
       'beforeend',
-      `<li data-position="${item.dataset.position}" data-salary="${item.dataset.salary}" data-age="${item.dataset.age}">${item.textContent.trim()}</li>`,
+      `<li data-position="${item.position}" data-salary="${item.salary}" data-age="${item.age}">${item.name}</li>`,
     );
   });
 }
@@ -33,5 +35,3 @@ function getEmployees(list) {
 }
 
 sortList(employers);
-
-getEmployees(employers);
