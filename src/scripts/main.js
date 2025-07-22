@@ -6,6 +6,14 @@ function sortList(list) {
   list.sort((a, b) => {
     return convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary);
   });
+
+  const listContainer = document.querySelector('ul');
+
+  listContainer.innerHTML = '';
+
+  list.forEach((item) => {
+    listContainer.appendChild(item);
+  });
 }
 
 function convertSalary(salary) {
